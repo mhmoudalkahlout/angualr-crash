@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TaskService } from '../../services/task.service';
-import { Task } from '../../Task';
+import { Task } from '../../interfaces/Task';
+import { AddTaskComponent } from '../add-task/add-task.component';
+import { TaskItemComponent } from '../task-item/task-item.component';
 
 @Component({
   selector: 'app-tasks',
+  imports: [AddTaskComponent, TaskItemComponent, CommonModule],
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  styleUrl: './tasks.component.css'
 })
-export class TasksComponent implements OnInit {
+
+export class TasksComponent {
 
     tasks: Task[] = [];
 
@@ -33,5 +38,4 @@ export class TasksComponent implements OnInit {
     addTask(task: Task) {
         this.taskService.addTask(task).subscribe((task) => this.tasks.push(task));
     }
-
 }

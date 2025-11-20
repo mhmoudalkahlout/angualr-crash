@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { UiService } from '../../services/ui.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ButtonComponent } from '../button/button.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
 
+export class HeaderComponent {
   title: string = 'Task Tracker';
   showAddTask: boolean = false;
   subscription: Subscription;
@@ -19,10 +22,6 @@ export class HeaderComponent implements OnInit {
       .onToggle()
       .subscribe((value) => (this.showAddTask = value));
   }
-
-  ngOnInit(): void {
-  }
-
   toggleAddTask() {
     this.uiService.toggleAddTask();
   }

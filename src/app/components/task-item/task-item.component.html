@@ -4,11 +4,10 @@
     (dblclick)="onToggle(task)"
     >
     <h3>{{ task.text }}
-        <fa-icon
-            (click)="onDelete(task)"
+        <i (click)="onDelete(task)"
             [ngStyle]="{ color: 'tomato' }"
-            [icon]="faTimes">
-        </fa-icon>
+            class="fa-solid fa-times">
+        </i>
     </h3>
     <p>{{ task.day }}</p>
 </div>
